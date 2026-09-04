@@ -1,0 +1,62 @@
+# Linux CLI Cheat Sheet (Week 1)
+
+## Navigation & Filesystem
+
+pwd
+  Flags: none
+  Example: pwd
+  Risk: Reveals full directory paths; avoid sharing sensitive paths publicly.
+
+ls
+  Flags: -l, -a, -h, -R
+  Example: ls -lah /var/log
+  Risk: Recursive listing may expose sensitive directory structures.
+
+cd
+  Flags: none
+  Example: cd /etc/nginx
+  Risk: Using cd in scripts without checking paths can cause unintended operations.
+
+## Searching & Filtering
+
+find
+  Flags: -name, -type, -mtime, -exec
+  Example: find /var/www -type f -name "*.log"
+  Risk: -exec with destructive commands can delete large amounts of data.
+
+grep
+  Flags: -i, -r, -v, -E
+  Example: grep -i "error" /var/log/syslog | head -20
+  Risk: Redirecting grep output with > overwrites files; use >> to append.
+
+head
+  Flags: -n
+  Example: head -n 50 /var/log/auth.log
+  Risk: Safe read-only command.
+
+wc
+  Flags: -l, -w, -c
+  Example: wc -l /etc/passwd
+  Risk: Safe read-only command.
+
+## Operators & Redirection
+
+pipe (|)
+  Flags: none
+  Example: ps aux | grep sshd
+  Risk: Piping into destructive commands (e.g., | xargs rm) can remove unintended files.
+
+redirect (>)
+  Flags: none
+  Example: echo "Hello" > greeting.txt
+  Risk: Overwrites entire file; irreversible.
+
+append (>>)
+  Flags: none
+  Example: echo "New entry" >> log.txt
+  Risk: Can corrupt system-managed logs if misused.
+
+stderr suppression (2>/dev/null)
+  Flags: none
+  Example: find / -name "*.conf" 2>/dev/null
+  Risk: Suppressing errors may hide important warnings.
