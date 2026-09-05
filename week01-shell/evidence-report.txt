@@ -1,0 +1,43 @@
+=== CVNP1601-W01 Evidence Report ===
+Generated : 2026-09-05 06:52:48
+Host      : cvnp1601-lab
+Week      : 01
+Folder    : /home/zainwright/cvnp1601-portfolio/week01-shell
+
+[SHELL & USER CONTEXT]
+  user  : zainwright
+  id    : uid=1000(zainwright) gid=1000(zainwright) groups=1000(zainwright),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),101(lxd)
+  shell : /bin/bash
+  pwd   : /home/zainwright/cvnp1601-portfolio/week01-shell
+
+[FILESYSTEM ORIENTATION — key FHS directories]
+  drwxr-xr-x 108 root root 4096 Sep  3 00:27 /etc
+  drwxrwxr-x 10 root syslog 4096 Sep  5 03:15 /var/log
+  drwxr-xr-x 3 root root 4096 Sep  3 00:21 /home
+  drwxr-xr-x 2 root root 36864 Sep  3 00:22 /usr/bin
+  drwxrwxrwt 14 root root 4096 Sep  5 06:33 /tmp
+
+[LOG DIRECTORY SAMPLE — /var/log (first 10 entries)]
+  total 3.1M
+  -rw-r--r--  1 root      root              36K Sep  3 00:22 alternatives.log
+  -rw-r-----  1 root      adm                 0 Sep  3 00:27 apport.log
+  drwxr-xr-x  2 root      root             4.0K Sep  3 00:22 apt
+  -rw-r-----  1 syslog    adm               29K Sep  5 06:45 auth.log
+  -rw-r--r--  1 root      root              60K Feb 10  2026 bootstrap.log
+  -rw-rw----  1 root      utmp              384 Sep  3 01:26 btmp
+  -rw-r-----  1 syslog    adm               70K Sep  3 00:27 cloud-init.log
+  -rw-r-----  1 root      adm              4.3K Sep  3 00:27 cloud-init-output.log
+  drwxr-xr-x  2 root      root             4.0K Jan 19  2026 dist-upgrade
+
+[REQUIRED FILES]
+  README.md : FOUND (327 bytes)
+  week1-cheatsheet.txt : FOUND (1500 bytes)
+  errors.txt : FOUND (4548 bytes)
+  tech-lead-note.md : FOUND (1366 bytes)
+  troubleshooting-narrative.md : FOUND (1497 bytes)
+  week1-diagnosis.md : FOUND (1576 bytes)
+
+[SECRET SCAN]
+  No obvious secret/token patterns detected. Still manually review every file before committing.
+
+Commit this file (evidence-report.txt) to your GitHub repo under week01-shell/.
