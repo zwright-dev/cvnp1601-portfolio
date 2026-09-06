@@ -1,0 +1,106 @@
+# Linux CLI Cheat Sheet (Week 1)
+
+## Navigation & Filesystem
+
+pwd
+  Flags: none
+  Example: pwd
+  Risk: Reveals full directory paths; avoid sharing sensitive paths publicly.
+
+ls
+  Flags: -l, -a, -h, -R
+  Example: ls -lah /var/log
+  Risk: Recursive listing may expose sensitive directory structures.
+
+cd
+  Flags: none
+  Example: cd /etc/nginx
+  Risk: Using cd in scripts without checking paths can cause unintended operations.
+
+## Searching & Filtering
+
+find
+  Flags: -name, -type, -mtime, -exec
+  Example: find /var/www -type f -name "*.log"
+  Risk: -exec with destructive commands can delete large amounts of data.
+
+grep
+  Flags: -i, -r, -v, -E
+  Example: grep -i "error" /var/log/syslog | head -20
+  Risk: Redirecting grep output with > overwrites files; use >> to append.
+
+head
+  Flags: -n
+  Example: head -n 50 /var/log/auth.log
+  Risk: Safe read-only command.
+
+wc
+  Flags: -l, -w, -c
+  Example: wc -l /etc/passwd
+  Risk: Safe read-only command.
+
+## Operators & Redirection
+
+pipe (|)
+  Flags: none
+  Example: ps aux | grep sshd
+  Risk: Piping into destructive commands (e.g., | xargs rm) can remove unintended files.
+
+redirect (>)
+  Flags: none
+  Example: echo "Hello" > greeting.txt
+  Risk: Overwrites entire file; irreversible.
+
+append (>>)
+  Flags: none
+  Example: echo "New entry" >> log.txt
+  Risk: Can corrupt system-managed logs if misused.
+
+stderr suppression (2>/dev/null)
+  Flags: none
+  Example: find / -name "*.conf" 2>/dev/null
+  Risk: Suppressing errors may hide important warnings.
+vim
+  Flags: none
+  Example: vim file.txt
+  Risk: Incorrect mode changes can cause unintended edits; always confirm you are in normal mode before running commands.
+
+vim modes & keys
+  Flags: none
+  Example: i (insert), Esc (normal), :w (write), :q (quit), :wq (save & quit)
+  Risk: Writing (:w) to system files without checking permissions can break configs.
+
+nano
+  Flags: none
+  Example: nano file.txt
+  Risk: Saving over system-managed files can overwrite critical configuration.
+
+nano save/exit
+  Flags: none
+  Example: Ctrl+O (save), Enter (confirm), Ctrl+X (exit)
+  Risk: Saving without reviewing changes may overwrite important data.
+
+grep -r
+  Flags: -r (recursive)
+  Example: grep -r "ssh" /etc
+  Risk: Recursive searches may expose sensitive configuration paths.
+
+grep -v
+  Flags: -v (invert match)
+  Example: grep -v "error" /var/log/syslog
+  Risk: Inverted searches can hide important warnings if used incorrectly.
+
+grep -E
+  Flags: -E (extended regex)
+  Example: grep -E "error|fail" /var/log/syslog
+  Risk: Complex regex patterns may match unintended lines.
+
+awk '{print $N}'
+  Flags: none
+  Example: awk '{print $1, $3}' /var/log/auth.log
+  Risk: Printing incorrect fields can misrepresent log data.
+
+awk -F:
+  Flags: -F: (set field separator to colon)
+  Example: awk -F: '{print $1, $3}' /etc/passwd
+  Risk: Parsing sensitive files like /etc/passwd requires caution to avoid exposing user details.
