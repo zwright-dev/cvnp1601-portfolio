@@ -1,0 +1,26 @@
+=== CVNP1601-W03 Evidence Report ===
+Generated : 2026-09-14 07:13:38
+Host      : cvnp1601-lab
+Week      : 03
+Folder    : /home/zainwright/cvnp1601-portfolio/week03-provisioning
+
+[DEVUSER ACCOUNT STATE — id devuser]
+  uid=1001(devuser) gid=1001(devuser) groups=1001(devuser),1002(developers)
+
+[DEVELOPERS GROUP — grep developers /etc/group]
+  developers:x:1002:devuser
+
+[SUDO -l FOR DEVUSER]
+  Query failed or requires a password in this shell: sudo: a password is required
+
+[REQUIRED FILES]
+  README.md : FOUND (251 bytes)
+  provisioning-summary.md : FOUND (905 bytes)
+  tech-lead-note.md : FOUND (606 bytes)
+  troubleshooting-narrative.md : FOUND (1045 bytes)
+  week3-diagnosis.md : FOUND (580 bytes)
+
+[SECRET SCAN]
+  WARNING: possible secret/token pattern found in tech-lead-note.md — review before committing (pattern: passwd[[:space:]]*[:=][[:space:]]*[^[:space:]]+)
+
+Commit this file (evidence-report.txt) to your GitHub repo under week03-provisioning/.
