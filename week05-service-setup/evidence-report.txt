@@ -1,0 +1,33 @@
+=== CVNP1601-W05 Evidence Report ===
+Generated : 2026-10-01 18:59:34
+Host      : cvnp1601-lab
+Week      : 05
+Folder    : /home/zainwright/cvnp1601-portfolio/week05-service-setup
+
+[NGINX PACKAGE STATE — dpkg -l nginx]
+  Desired=Unknown/Install/Remove/Purge/Hold
+  | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+  |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+  ||/ Name           Version            Architecture Description
+  +++-==============-==================-============-==========================================
+  ii  nginx          1.24.0-2ubuntu7.18 amd64        small, powerful, scalable web/proxy server
+
+[NGINX SERVICE STATE]
+  is-active  : active
+  is-enabled : enabled
+
+[SERVER-SETUP.SH — ls -la]
+  -rw-rw-r-- 1 zainwright zainwright 1213 Oct  1 18:42 /home/zainwright/cvnp1601-portfolio/week05-service-setup/server-setup.sh
+
+[REQUIRED FILES]
+  README.md : FOUND (568 bytes)
+  server-setup.sh : FOUND (1213 bytes)
+  week1-cheatsheet.txt : FOUND (3634 bytes)
+  tech-lead-note.md : FOUND (675 bytes)
+  troubleshooting-narrative.md : FOUND (1115 bytes)
+  week5-diagnosis.md : FOUND (548 bytes)
+
+[SECRET SCAN]
+  No obvious secret/token patterns detected. Still manually review every file before committing.
+
+Commit this file (evidence-report.txt) to your GitHub repo under week05-service-setup/.
