@@ -1,0 +1,93 @@
+vim
+  Flags: none
+  Example: vim file.txt
+  Risk: Incorrect mode changes can cause unintended edits; always confirm you are in normal mode before running commands.
+
+vim modes & keys
+  Flags: none
+  Example: i (insert), Esc (normal), :w (write), :q (quit), :wq (save & quit)
+  Risk: Writing (:w) to system files without checking permissions can break configs.
+
+nano
+  Flags: none
+  Example: nano file.txt
+  Risk: Saving over system-managed files can overwrite critical configuration.
+
+nano save/exit
+  Flags: none
+  Example: Ctrl+O (save), Enter (confirm), Ctrl+X (exit)
+  Risk: Saving without reviewing changes may overwrite important data.
+
+grep -r
+  Flags: -r (recursive)
+  Example: grep -r "ssh" /etc
+  Risk: Recursive searches may expose sensitive configuration paths.
+
+grep -v
+  Flags: -v (invert match)
+  Example: grep -v "error" /var/log/syslog
+  Risk: Inverted searches can hide important warnings if used incorrectly.
+
+grep -E
+  Flags: -E (extended regex)
+  Example: grep -E "error|fail" /var/log/syslog
+  Risk: Complex regex patterns may match unintended lines.
+
+awk '{print $N}'
+  Flags: none
+  Example: awk '{print $1, $3}' /var/log/auth.log
+  Risk: Printing incorrect fields can misrepresent log data.
+
+awk -F:
+  Flags: -F: (set field separator to colon)
+  Example: awk -F: '{print $1, $3}' /etc/passwd
+  Risk: Parsing sensitive files like /etc/passwd requires caution to avoid exposing user details.
+apt update
+  Flags: none
+  Example: sudo apt update
+  Risk: Missing this step before installing new packages can cause dependency conflicts or install outdated, insecure software versions.
+
+apt install -y
+  Flags: -y (assume yes to all prompts)
+  Example: sudo apt install -y nginx
+  Risk: Automatically accepting installations skips the prompt displaying how much disk space will be used or if conflicting packages will be removed.
+
+apt purge
+  Flags: none
+  Example: sudo apt purge nginx
+  Risk: Deletes the package along with all its custom configuration files, which can cause permanent data loss if configs aren't backed up.
+
+apt autoremove
+  Flags: none
+  Example: sudo apt autoremove
+  Risk: Might occasionally remove orphan library packages that other custom, compiled-from-source tools secretly rely on.
+
+dpkg -l
+  Flags: -l (list matching packages)
+  Example: dpkg -l | grep nginx
+  Risk: Generating un-filtered lists prints massive amounts of text to the CLI screen, making it easy to miss specific package status flags (like 'ii' or 'rc').
+
+systemctl lifecycle commands
+  Flags: start, stop, restart, status
+  Example: sudo systemctl restart nginx
+  Risk: Restarting or stopping a critical service abruptly drops active user connections and can crash dependent application workflows.
+
+enable --now
+  Flags: --now (enable and start simultaneously)
+  Example: sudo systemctl enable --now nginx
+  Risk: Immediately activates the service inside the current live session, which can disrupt debugging or trigger port conflicts if configured incorrectly.
+
+is-active --quiet
+  Flags: --quiet (suppress standard output)
+  Example: systemctl is-active --quiet nginx
+  Risk: Produces no readable text output on the screen, relying completely on the shell exit status which can hide debugging clues if not paired with $?.
+
+$?
+  Flags: none
+  Example: echo $?
+  Risk: Only holds the exit status of the *immediate* previous command executed; running any other command (even a simple clear or echo) overwrites this value.
+
+shebang
+  Flags: none
+  Example: #!/bin/bash
+  Risk: Placing characters, spaces, or comments on line 1 before the shebang path breaks script execution or forces it to use the wrong shell environment.
