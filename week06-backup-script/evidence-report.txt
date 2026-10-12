@@ -1,0 +1,29 @@
+=== CVNP1601-W06 Evidence Report ===
+Generated : 2026-10-12 06:52:49
+Host      : cvnp1601-lab
+Week      : 06
+Folder    : /home/zainwright/cvnp1601-portfolio/week06-backup-script
+
+[BACKUP_ETC.SH SYNTAX — bash -n]
+  Syntax OK
+
+[BACKUP_ETC.SH PERMISSIONS — ls -la]
+  -rwxrwxr-x 1 zainwright zainwright 1826 Oct 12 06:51 /home/zainwright/cvnp1601-portfolio/week06-backup-script/backup_etc.sh
+
+[GIT LOG — ~/scripts]
+  38d019f Add verification output for archive path
+  d3d7a7e Create backup script with logging
+  Commit count: 2
+
+[REQUIRED FILES]
+  README.md : FOUND (453 bytes)
+  backup_etc.sh : FOUND (1826 bytes)
+  week1-cheatsheet.txt : FOUND (2901 bytes)
+  tech-lead-note.md : FOUND (714 bytes)
+  troubleshooting-narrative.md : FOUND (1039 bytes)
+  week6-diagnosis.md : FOUND (801 bytes)
+
+[SECRET SCAN]
+  No obvious secret/token patterns detected. Still manually review every file before committing.
+
+Commit this file (evidence-report.txt) to your GitHub repo under week06-backup-script/.
